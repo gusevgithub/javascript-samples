@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Работа с массивом данных</title>
+	<meta charset='utf-8'>
+	<link rel='stylesheet' href='../pre-style.css'>
+</head>
+<body>
+	<a href="../index.html">Вернуться</a>
+		<h2>JavaScript - Работа с массивом данных, использование методов split() and toFixed()</h2>
+		<h4 class="btn-html">HTML open -></h4>
+		<pre class="pre-html">
+	&nbsp;&lt;div class=&#39;output&#39;&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;ul&gt;&lt;/ul&gt;
+	&nbsp;&lt;/div&gt;
+
+	&nbsp;&lt;div class=&#39;output&#39;&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;p&gt;&lt;/p&gt;
+	&nbsp;&lt;/div&gt;
+
+		</pre>
+		<h4 class="btn-java">JavaScript open -><h4>
+		<pre class="pre-java">
+	var list = document.querySelector('.output ul');
+	var totalBox = document.querySelector('.output p');
+	var total = 0;
+	list.innerHTML = '';
+	totalBox.textContent = '';
+	var products = ['Underpants:6.99',
+			'Socks:5.99',
+			'T-shirt:14.99',
+			'Trousers:31.99',
+			'Shoes:23.99'];
+
+	for (var i = 0; i < products.length; i++) {
+	/* // Вариант - 1
+		var myIndexOf = products[i].indexOf(':');
+		var name = products[i].slice(0,myIndexOf);
+		var price = Number(products[i].slice(myIndexOf+1));
+	*/
+	// Вариант -2
+	var subArray = products[i].split(':');	// Разбиение свойства и значение на массив
+	var name = subArray[0];			// Первое значение массива - name
+	var price = Number(subArray[1]);	// Второе значение массива - price
+	total += price;				// Добавляем вторые значения массива в переменную total
+	itemText = name+' - $'+price;		// Создаем новые строки - itemText
+
+	var listItem = document.createElement('li');	// Создаем новые элементы - li
+	listItem.textContent = itemText;		// Добавляем в элементы полученные строки - itemText
+	list.appendChild(listItem);			// Элементы li будут дочерними элементами .output ul
+	}
+
+	totalBox.textContent = 'Total: $' + total.toFixed(2);	// Метод toFixed() форматирует число, 2 - сотые доли
+
+		</pre>
+		<h4>Результат</h4>
+	<div class='output'>
+		<ul></ul>
+	</div>
+	
+	<div class='output'>
+		<p></p>
+	</div>
+	
+	<script>
+	
+	var list = document.querySelector('.output ul');
+	var totalBox = document.querySelector('.output p');
+	var total = 0;
+	list.innerHTML = '';
+	totalBox.textContent = '';
+	var products = ['Underpants:6.99',
+			'Socks:5.99',
+			'T-shirt:14.99',
+			'Trousers:31.99',
+			'Shoes:23.99'];
+
+	for (var i = 0; i < products.length; i++) {
+	/* // Вариант - 1
+		var myIndexOf = products[i].indexOf(':');
+		var name = products[i].slice(0,myIndexOf);
+		var price = Number(products[i].slice(myIndexOf+1));
+	*/
+	// Вариант -2
+	var subArray = products[i].split(':');	// Разбиение свойства и значение на массив
+	var name = subArray[0];			// Первое значение массива - name
+	var price = Number(subArray[1]);	// Второе значение массива - price
+	total += price;				// Добавляем вторые значения массива в переменную total
+	itemText = name+' - $'+price;		// Создаем новые строки - itemText
+
+	var listItem = document.createElement('li');	// Создаем новые элементы - li
+	listItem.textContent = itemText;		// Добавляем в элементы полученные строки - itemText
+	list.appendChild(listItem);			// Элементы li будут дочерними элементами .output ul
+	}
+
+	totalBox.textContent = 'Total: $' + total.toFixed(2);	// Метод toFixed() форматирует число, 2 - сотые доли
+
+	</script>
+	<script src='../pre-script.js'></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

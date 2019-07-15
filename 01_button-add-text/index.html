@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Apply JavaScript example</title>
+		<link rel='stylesheet' href='../pre-style.css'>
+  </head>
+  <body>
+		<a href="../index.html">Вернуться</a>
+		<h2>JavaScript - добавление текста нажатием на кнопки</h2>
+		<h4 class="btn-html">HTML open -></h4>
+		<pre class="pre-html">
+	&lt;button&gt;Click me&lt;/button&gt;&lt;br&gt;
+	&lt;button&gt;Click me&lt;/button&gt;&lt;br&gt;
+	&lt;button&gt;Click me&lt;/button&gt;&lt;br&gt;
+		</pre>
+		<h4 class="btn-java">JavaScript open -><h4>
+		<pre class="pre-java">
+	// Функция: создает новый параграф и добавляет его вниз тела HTML.
+
+	function createParagraph() {
+		var para = document.createElement('p');
+		para.textContent = 'You clicked the button!';
+		document.body.appendChild(para);
+	}
+
+	/*
+		1. Получаем ссылки на все кнопки на странице и отсортировываем их в массиве.
+		2. Перебераем все кнопки и добавляем к ним отслеживатель события нажатия.
+
+		При нажатии любой кнопки, будет выполняться функция createParagraph().
+	*/
+
+	var buttons = document.querySelectorAll('button');
+
+	for (var i = 0; i < buttons.length ; i++) {
+		buttons[i].addEventListener('click', createParagraph);
+	}
+		</pre>
+		<h4>Результат</h4>
+    <button>Click me</button><br>
+    <button>Click me</button><br>
+    <button>Click me</button><br>
+	<script src='script.js'></script>
+	<script src='../pre-script.js'></script>
+  </body>
+</html>

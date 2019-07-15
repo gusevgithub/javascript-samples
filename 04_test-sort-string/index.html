@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Выбор строк по условию</title>
+	<meta charset='utf-8'>
+	<link rel='stylesheet' href='../pre-style.css'>
+	<style>
+		.output {
+			min-height: 55px;
+			width: 500px;
+			background-color: #eee;
+			border: 1px solid silver;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<a href="../index.html">Вернуться</a>
+		<h2>JavaScript - Выбор строк по условию, методы - toLowerCase(), toUpperCase(), replace() and slice()</h2>
+		<h4 class="btn-html">HTML open -></h4>
+		<pre class="pre-html">
+	&lt;h4&gt;Выбор строк по условию&lt;/h4&gt;
+	&nbsp;&nbsp; &nbsp;&lt;i&gt;(Некоторые слова начинаются с букв верхнего регистра)&lt;/i&gt;
+	&nbsp;&nbsp; &nbsp;&lt;ol&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;Happy Birthday!&lt;/li&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;Merry Christmas my love&lt;/li&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;A happy Christmas to all the family&lt;/li&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;You\&#39;re all I want for Christmas&lt;/li&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;li&gt;Get well soon&lt;/li&gt;
+	&nbsp;&nbsp; &nbsp;&lt;/ol&gt;
+	&nbsp;&nbsp; &nbsp;&lt;h4&gt;Введите букву, слово или несколько слов из строк выше&lt;/h4&gt;
+	&nbsp;&nbsp; &nbsp;&lt;input type=&quot;text&quot; class=&quot;str&quot;&gt;
+	&nbsp;&nbsp; &nbsp;&lt;button&gt;Вывести строку&lt;/button&gt;
+	&nbsp;&nbsp; &nbsp;&lt;h4&gt;Вывод строк, в которых есть введенный текст&lt;/h4&gt;
+	&nbsp;&nbsp; &nbsp;&lt;i&gt;(Первые буквы строки в верхнем регистре, остальные в нижнем)&lt;/i&gt;
+	&nbsp;&nbsp; &nbsp;&lt;div class=&#39;output&#39;&gt;
+	&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&lt;ul&gt;&lt;/ul&gt;
+	&nbsp;&nbsp; &nbsp;&lt;/div&gt;
+	&nbsp;&nbsp; &nbsp;&lt;h4&gt;Метод slice() - возврат нового массива&lt;/h4&gt;
+	&nbsp;&nbsp; &nbsp;&lt;p&gt;MAN675847583748sjt567654;Manchester Piccadilly&lt;/p&gt;
+		</pre>
+		<h4 class="btn-java">JavaScript open -><h4>
+		<pre class="pre-java">
+		var stanzya = document.querySelector('p');
+		var btn = document.querySelector('button');
+		var input = document.querySelector('input');
+		var li = document.querySelectorAll('li');
+		
+		var list = document.querySelector('.output ul');
+		
+		function handler() {
+			for(var i = 0; i < li.length; i++) {
+				var startList = li[i].textContent;
+				var inLower = startList.toLowerCase();			// все буквы в нижний регистр
+				var inUpper = inLower[0].toUpperCase();			// первая буква в строке в верхний регистр
+				var inReplace = inLower.replace(inLower[0], inUpper[0]);	// Меняем первый символ в верхний регистр		
+				if(li[i].textContent.indexOf(input.value) !== -1) {		// Если индекс не -1 (не пусто)
+					if(input.value !== '') {
+						var listItem = document.createElement('li');
+						listItem.textContent = inReplace;
+						list.appendChild(listItem);
+					}
+				}
+			}
+		}
+		
+		btn.addEventListener('click', handler);
+		
+		// Создаем строку
+		var stanzya = 'MAN675847583748sjt567654;Manchester Piccadilly';
+		// Выбираем три символа с начала строки
+		var code = stanzya.slice(0,3);
+		// Выбираем символы с 25-го до последнего
+		var codeSlice = stanzya.slice(25);
+		// Создаем новую строку
+		var result = code+': '+codeSlice;
+		// Выводим результат
+		document.write(result);
+		</pre>
+	<h4>Результат</h4>
+	<h4>Выбор строк по условию</h4>
+	<i>(Некоторые слова начинаются с букв верхнего регистра)</i>
+	<ol>
+		<li>Happy Birthday!</li>
+		<li>Merry Christmas my love</li>
+		<li>A happy Christmas to all the family</li>
+		<li>You\'re all I want for Christmas</li>
+		<li>Get well soon</li>
+	</ol>
+	<h4>Введите букву, слово или несколько слов из строк выше</h4>
+	<input type="text" class="str">
+	<button>Вывести строку</button>
+	<h4>Вывод строк, в которых есть введенный текст</h4>
+	<i>(Первые буквы строки в верхнем регистре, остальные в нижнем)</i>
+	<div class='output'>
+		<ul></ul>
+	</div>
+	<h4>Метод slice() - возврат нового массива</h4>
+	<p>MAN675847583748sjt567654;Manchester Piccadilly</p>
+	<script>
+		var stanzya = document.querySelector('p');
+		var btn = document.querySelector('button');
+		var input = document.querySelector('input');
+		var li = document.querySelectorAll('li');
+		
+		var list = document.querySelector('.output ul');
+		
+		function handler() {
+			for(var i = 0; i < li.length; i++) {
+				var startList = li[i].textContent;
+				var inLower = startList.toLowerCase();			// все буквы в нижний регистр
+				var inUpper = inLower[0].toUpperCase();			// первая буква в строке в верхний регистр
+				var inReplace = inLower.replace(inLower[0], inUpper[0]);	// Меняем первый символ в верхний регистр		
+				if(li[i].textContent.indexOf(input.value) !== -1) {		// Если индекс не -1 (не пусто)
+					if(input.value !== '') {
+						var listItem = document.createElement('li');
+						listItem.textContent = inReplace;
+						list.appendChild(listItem);
+					}
+				}
+			}
+		}
+		
+		btn.addEventListener('click', handler);
+		
+		// Создаем строку
+		var stanzya = 'MAN675847583748sjt567654;Manchester Piccadilly';
+		// Выбираем три символа с начала строки
+		var code = stanzya.slice(0,3);
+		// Выбираем символы с 25-го до последнего
+		var codeSlice = stanzya.slice(25);
+		// Создаем новую строку
+		var result = code+': '+codeSlice;
+		// Выводим результат
+		document.write(result);
+	</script>
+	<script src='../pre-script.js'></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
